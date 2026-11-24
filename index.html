@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Meta AI Physical Product Thesis Capstone 2 2026</title>
+  <!-- Google Fonts for Futuristic Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       CSS VARIABLES & THEME TOKENS
+       ========================================================================== */
+    :root {
+      --bg-deep: #060812;
+      --bg-panel: rgba(13, 18, 36, 0.85);
+      --bg-row: rgba(18, 25, 48, 0.72);
+      --neon-cyan: #00f3ff;
+      --neon-magenta: #ff00e5;
+      --neon-purple: #8a2be2;
+      --neon-emerald: #00ff9d;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --border-subtle: rgba(0, 243, 255, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-deep);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 15% 15%, rgba(0, 243, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(255, 0, 229, 0.08) 0%, transparent 40%),
+        linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 42px 42px, 42px 42px;
+      padding: 2rem 1rem 4rem;
+    }
+
+    /* ==========================================================================
+       LAYOUT CONTAINER & HEADER
+       ========================================================================== */
+    .main-container {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .hero-header {
+      text-align: center;
+      padding: 2.25rem 1.5rem;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 0 24px rgba(0, 243, 255, 0.06);
+      transition: all 2s ease;
+    }
+
+    .hero-header:hover {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 30px rgba(0, 243, 255, 0.35), 0 0 60px rgba(255, 0, 229, 0.2);
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--neon-cyan);
+      background: rgba(0, 243, 255, 0.1);
+      border: 1px solid rgba(0, 243, 255, 0.4);
+      margin-bottom: 1rem;
+      box-shadow: 0 0 14px rgba(0, 243, 255, 0.25);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--neon-emerald);
+      box-shadow: 0 0 10px var(--neon-emerald);
+      animation: pulseGlow 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.55; }
+    }
+
+    .main-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.55rem, 3.8vw, 2.85rem);
+      font-weight: 900;
+      line-height: 1.25;
+      letter-spacing: 0.04em;
+      background: linear-gradient(90deg, #ffffff 0%, var(--neon-cyan) 48%, var(--neon-magenta) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 28px rgba(0, 243, 255, 0.35);
+      transition: all 2s ease;
+    }
+
+    .hero-header:hover .main-title {
+      text-shadow: 0 0 35px rgba(0, 243, 255, 0.75), 0 0 65px rgba(255, 0, 229, 0.55);
+    }
+
+    .subtitle-text {
+      margin-top: 0.85rem;
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       MODE CONTROL BAR (CLICK BEHAVIOR TOGGLE)
+       ========================================================================== */
+    .control-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      backdrop-filter: blur(12px);
+    }
+
+    .control-info {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+    }
+
+    .mode-switch-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .mode-btn {
+      padding: 0.55rem 1.1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 243, 255, 0.35);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-secondary);
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 2s ease;
+    }
+
+    .mode-btn:hover,
+    .mode-btn.active {
+      color: #ffffff;
+      border-color: var(--neon-cyan);
+      background: rgba(0, 243, 255, 0.16);
+      box-shadow: 0 0 18px rgba(0, 243, 255, 0.45), inset 0 0 10px rgba(0, 243, 255, 0.25);
+      text-shadow: 0 0 8px var(--neon-cyan);
+    }
+
+    /* ==========================================================================
+       STRUCTURED THESIS TABLE & FLEXBOX NEON TITLE BUTTONS
+       ========================================================================== */
+    .table-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      overflow: hidden;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 12px 45px rgba(0, 0, 0, 0.65);
+    }
+
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table.thesis-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .thesis-table thead {
+      background: linear-gradient(90deg, rgba(0, 243, 255, 0.14), rgba(255, 0, 229, 0.14));
+      border-bottom: 1px solid rgba(0, 243, 255, 0.35);
+    }
+
+    .thesis-table th {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--neon-cyan);
+      padding: 1.15rem 1.4rem;
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+    }
+
+    .thesis-table tbody tr {
+      background: var(--bg-row);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+      transition: all 2s ease;
+    }
+
+    .thesis-table tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    .thesis-table tbody tr:hover {
+      background: rgba(24, 35, 68, 0.92);
+    }
+
+    .thesis-table td {
+      padding: 1.25rem 1.4rem;
+      vertical-align: middle;
+    }
+
+    .col-index {
+      width: 90px;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--neon-magenta);
+      text-shadow: 0 0 10px rgba(255, 0, 229, 0.55);
+    }
+
+    /* FLEXBOX TITLE BUTTON WITH 2 SECONDS EASE NEON GLOW ANIMATION */
+    .flexbox-title-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      width: 100%;
+      padding: 1.15rem 1.5rem;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(10, 16, 34, 0.95) 0%, rgba(20, 29, 58, 0.95) 100%);
+      border: 1.5px solid rgba(0, 243, 255, 0.38);
+      color: #ffffff;
+      text-align: left;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+      /* MANDATORY 2 SECONDS EASE ANIMATION GLOW */
+      transition: all 2s ease;
+    }
+
+    /* Subtle animated light sweep layer */
+    .flexbox-title-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 20%, rgba(0, 243, 255, 0.18) 50%, rgba(255, 0, 229, 0.18) 80%, transparent 100%);
+      opacity: 0;
+      transition: all 2s ease;
+      pointer-events: none;
+    }
+
+    /* HOVER NEON GLOW WITH 2 SECONDS EASE ANIMATION */
+    .flexbox-title-btn:hover {
+      transform: translateY(-3px) scale(1.012);
+      border-color: var(--neon-cyan);
+      background: linear-gradient(135deg, rgba(0, 243, 255, 0.18) 0%, rgba(255, 0, 229, 0.22) 100%);
+      box-shadow:
+        0 0 18px rgba(0, 243, 255, 0.75),
+        0 0 38px rgba(0, 243, 255, 0.45),
+        0 0 65px rgba(255, 0, 229, 0.45),
+        inset 0 0 22px rgba(0, 243, 255, 0.35);
+    }
+
+    .flexbox-title-btn:hover::before {
+      opacity: 1;
+    }
+
+    /* ACTIVE / SELECTED STATE */
+    .flexbox-title-btn.is-active {
+      border-color: var(--neon-emerald);
+      background: linear-gradient(135deg, rgba(0, 255, 157, 0.16) 0%, rgba(0, 243, 255, 0.2) 100%);
+      box-shadow:
+        0 0 22px rgba(0, 255, 157, 0.75),
+        0 0 45px rgba(0, 243, 255, 0.45),
+        inset 0 0 18px rgba(0, 255, 157, 0.3);
+    }
+
+    .btn-flex-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      z-index: 1;
+    }
+
+    .neon-icon-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(0, 243, 255, 0.12);
+      border: 1px solid rgba(0, 243, 255, 0.45);
+      color: var(--neon-cyan);
+      transition: all 2s ease;
+    }
+
+    .flexbox-title-btn:hover .neon-icon-box {
+      background: var(--neon-cyan);
+      color: #050814;
+      box-shadow: 0 0 22px var(--neon-cyan);
+      transform: rotate(6deg) scale(1.08);
+    }
+
+    .flexbox-title-btn.is-active .neon-icon-box {
+      background: var(--neon-emerald);
+      border-color: var(--neon-emerald);
+      color: #050814;
+      box-shadow: 0 0 20px var(--neon-emerald);
+    }
+
+    .btn-text-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .btn-main-label {
+      font-size: 1.06rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.4;
+      transition: all 2s ease;
+    }
+
+    .flexbox-title-btn:hover .btn-main-label {
+      color: #ffffff;
+      text-shadow: 0 0 12px var(--neon-cyan), 0 0 24px rgba(255, 0, 229, 0.7);
+    }
+
+    .btn-sub-tag {
+      font-size: 0.78rem;
+      color: var(--neon-cyan);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: all 2s ease;
+    }
+
+    .flexbox-title-btn:hover .btn-sub-tag {
+      color: #f0abfc;
+      text-shadow: 0 0 8px var(--neon-magenta);
+    }
+
+    .btn-flex-right {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+      padding: 0.5rem 0.95rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--neon-cyan);
+      border: 1px solid rgba(0, 243, 255, 0.4);
+      background: rgba(0, 243, 255, 0.08);
+      z-index: 1;
+      transition: all 2s ease;
+    }
+
+    .flexbox-title-btn:hover .btn-flex-right {
+      background: var(--neon-magenta);
+      border-color: var(--neon-magenta);
+      color: #ffffff;
+      box-shadow: 0 0 20px var(--neon-magenta);
+    }
+
+    .flexbox-title-btn.is-active .btn-flex-right {
+      background: var(--neon-emerald);
+      border-color: var(--neon-emerald);
+      color: #04100a;
+      box-shadow: 0 0 18px var(--neon-emerald);
+    }
+
+    /* ==========================================================================
+       INSTANT LINK REVEAL & LIVE VIEWPORT PANEL ("LALABAS AGAD YUNG LINK")
+       ========================================================================== */
+    .instant-viewer-section {
+      display: none;
+      flex-direction: column;
+      background: var(--bg-panel);
+      border: 1.5px solid var(--neon-cyan);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 35px rgba(0, 243, 255, 0.35), 0 16px 48px rgba(0, 0, 0, 0.75);
+      animation: revealSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .instant-viewer-section.visible {
+      display: flex;
+    }
+
+    @keyframes revealSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.985);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .viewer-topbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.4rem;
+      background: linear-gradient(90deg, rgba(0, 243, 255, 0.16), rgba(255, 0, 229, 0.16));
+      border-bottom: 1px solid rgba(0, 243, 255, 0.35);
+    }
+
+    .active-url-box {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex: 1;
+      min-width: 260px;
+      background: rgba(6, 10, 22, 0.92);
+      border: 1px solid rgba(0, 243, 255, 0.45);
+      border-radius: 10px;
+      padding: 0.6rem 1rem;
+      overflow: hidden;
+    }
+
+    .url-status-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      background: var(--neon-emerald);
+      color: #03140b;
+      flex-shrink: 0;
+    }
+
+    .active-url-link {
+      color: var(--neon-cyan);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: all 2s ease;
+    }
+
+    .active-url-link:hover {
+      color: #ffffff;
+      text-shadow: 0 0 12px var(--neon-cyan);
+      text-decoration: underline;
+    }
+
+    .viewer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .action-neon-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.6rem 1.1rem;
+      border-radius: 10px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      border: 1px solid var(--neon-cyan);
+      background: rgba(0, 243, 255, 0.14);
+      color: #ffffff;
+      transition: all 2s ease;
+    }
+
+    .action-neon-btn:hover {
+      background: var(--neon-cyan);
+      color: #050814;
+      box-shadow: 0 0 24px var(--neon-cyan);
+    }
+
+    .action-neon-btn.magenta {
+      border-color: var(--neon-magenta);
+      background: rgba(255, 0, 229, 0.16);
+    }
+
+    .action-neon-btn.magenta:hover {
+      background: var(--neon-magenta);
+      color: #ffffff;
+      box-shadow: 0 0 24px var(--neon-magenta);
+    }
+
+    .iframe-wrapper {
+      position: relative;
+      width: 100%;
+      height: 68vh;
+      min-height: 460px;
+      background: #0b0f1e;
+    }
+
+    .iframe-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      background: #ffffff;
+    }
+
+    /* Toast Notification for Copy / Status */
+    .toast-banner {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: rgba(8, 14, 30, 0.95);
+      border: 1.5px solid var(--neon-emerald);
+      color: #ffffff;
+      padding: 0.85rem 1.35rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 0 25px rgba(0, 255, 157, 0.45);
+      opacity: 0;
+      transform: translateY(15px);
+      pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      z-index: 9999;
+    }
+
+    .toast-banner.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .thesis-table thead {
+        display: none;
+      }
+      .thesis-table, .thesis-table tbody, .thesis-table tr, .thesis-table td {
+        display: block;
+        width: 100%;
+      }
+      .thesis-table tr {
+        padding: 0.75rem;
+      }
+      .thesis-table td {
+        padding: 0.5rem;
+      }
+      .col-index {
+        width: auto;
+        font-size: 0.9rem;
+      }
+      .flexbox-title-btn {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .btn-flex-right {
+        align-self: flex-end;
+      }
+      .iframe-wrapper {
+        height: 56vh;
+        min-height: 360px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="main-container">
+    <!-- ======================================================================
+         HEADER SECTION
+         ====================================================================== -->
+    <header class="hero-header">
+      <div class="badge-pill">
+        <span class="pulse-dot"></span>
+        <span>Capstone Project Directory &bull; 2026</span>
+      </div>
+      <h1 class="main-title">My Meta AI Physical Product Thesis Capstone 2 2026</h1>
+      <p class="subtitle-text">
+        I-click ang alinman sa mga <strong>Flexbox Neon Title Buttons</strong> sa table sa ibaba upang agad na lumabas at mag-load ang napiling thesis link.
+      </p>
+    </header>
+
+    <!-- ======================================================================
+         INTERACTION MODE BAR
+         ====================================================================== -->
+    <section class="control-bar" aria-label="Click Launch Options">
+      <div class="control-info">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00f3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+        </svg>
+        <span><strong>Instant Launch Mode:</strong> Kapag na-click ang title, lalabas agad ang link sa ibaba (at pwede ring buksan sa New Tab).</span>
+      </div>
+      <div class="mode-switch-group">
+        <button type="button" id="modeEmbedBtn" class="mode-btn active" onclick="setLaunchMode('embed')">
+          Instant Embedded Preview + Link
+        </button>
+        <button type="button" id="modeBothBtn" class="mode-btn" onclick="setLaunchMode('both')">
+          Instant Preview + Auto Open Tab
+        </button>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         STRUCTURED TABLE WITH FLEXBOX NEON TITLE BUTTONS
+         ====================================================================== -->
+    <section class="table-card" aria-label="Thesis Links Directory Table">
+      <div class="table-responsive">
+        <table class="thesis-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Thesis Project Title (Click Flexbox Button to Open Link Instantly)</th>
+            </tr>
+          </thead>
+          <tbody id="thesisTableBody">
+            <!-- Row 1 -->
+            <tr>
+              <td class="col-index">01</td>
+              <td>
+                <button
+                  type="button"
+                  class="flexbox-title-btn"
+                  data-index="0"
+                  data-title="Factors Influence Students Using Illustration And Design - Thesis Product"
+                  data-url="https://ragesband2.github.io/November-24-2026-Factors-Influence-Students-Using-Illustration-And-Design---Thesis-Product/"
+                  onclick="activateThesisLink(this)"
+                >
+                  <div class="btn-flex-left">
+                    <div class="neon-icon-box">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                        <path d="M2 2l7.586 7.586"></path>
+                        <circle cx="11" cy="11" r="2"></circle>
+                      </svg>
+                    </div>
+                    <div class="btn-text-stack">
+                      <span class="btn-main-label">Factors Influence Students Using Illustration And Design - Thesis Product</span>
+                      <span class="btn-sub-tag">Module 01 &bull; Meta AI Physical Product Research Portal</span>
+                    </div>
+                  </div>
+                  <div class="btn-flex-right">
+                    <span>Click to Launch</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </button>
+              </td>
+            </tr>
+
+            <!-- Row 2 -->
+            <tr>
+              <td class="col-index">02</td>
+              <td>
+                <button
+                  type="button"
+                  class="flexbox-title-btn"
+                  data-index="1"
+                  data-title="My AI Software - Factors Influence Students Using Illustration And Design"
+                  data-url="https://ragesband2.github.io/November-24-2026-My-AI-Software---Factors-Influence-Students-Using-Illustration-And-Design/"
+                  onclick="activateThesisLink(this)"
+                >
+                  <div class="btn-flex-left">
+                    <div class="neon-icon-box">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                        <rect x="9" y="9" width="6" height="6"></rect>
+                        <line x1="9" y1="1" x2="9" y2="4"></line>
+                        <line x1="15" y1="1" x2="15" y2="4"></line>
+                        <line x1="9" y1="20" x2="9" y2="23"></line>
+                        <line x1="15" y1="20" x2="15" y2="23"></line>
+                        <line x1="20" y1="9" x2="23" y2="9"></line>
+                        <line x1="20" y1="14" x2="23" y2="14"></line>
+                        <line x1="1" y1="9" x2="4" y2="9"></line>
+                        <line x1="1" y1="14" x2="4" y2="14"></line>
+                      </svg>
+                    </div>
+                    <div class="btn-text-stack">
+                      <span class="btn-main-label">My AI Software - Factors Influence Students Using Illustration And Design</span>
+                      <span class="btn-sub-tag">Module 02 &bull; Interactive AI Software System</span>
+                    </div>
+                  </div>
+                  <div class="btn-flex-right">
+                    <span>Click to Launch</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </button>
+              </td>
+            </tr>
+
+            <!-- Row 3 -->
+            <tr>
+              <td class="col-index">03</td>
+              <td>
+                <button
+                  type="button"
+                  class="flexbox-title-btn"
+                  data-index="2"
+                  data-title="Text-to-Image - Factors Influence Students Using Illustration And Design"
+                  data-url="https://ragesband2.github.io/November-24-2026-Text-to-Image---Factors-Influence-Students-Using-Illustration-And-Design/"
+                  onclick="activateThesisLink(this)"
+                >
+                  <div class="btn-flex-left">
+                    <div class="neon-icon-box">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                        <polyline points="21 15 16 10 5 21"></polyline>
+                      </svg>
+                    </div>
+                    <div class="btn-text-stack">
+                      <span class="btn-main-label">Text-to-Image - Factors Influence Students Using Illustration And Design</span>
+                      <span class="btn-sub-tag">Module 03 &bull; Generative Text-to-Image Studio</span>
+                    </div>
+                  </div>
+                  <div class="btn-flex-right">
+                    <span>Click to Launch</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         INSTANT LINK OUTPUT & LIVE IFRAME VIEWPORT (APPEARS IMMEDIATELY ON CLICK)
+         ====================================================================== -->
+    <section id="instantViewerSection" class="instant-viewer-section" aria-live="polite">
+      <div class="viewer-topbar">
+        <div class="active-url-box">
+          <span class="url-status-badge">Active Link</span>
+          <a id="activeUrlAnchor" href="#" target="_blank" rel="noopener noreferrer" class="active-url-link">
+            https://ragesband2.github.io/...
+          </a>
+        </div>
+
+        <div class="viewer-actions">
+          <button type="button" class="action-neon-btn" onclick="copyActiveUrl()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span>Copy Link</span>
+          </button>
+
+          <a id="openNewTabBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-neon-btn magenta">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            <span>Open Fullscreen Tab</span>
+          </a>
+
+          <button type="button" class="action-neon-btn" onclick="closeViewer()" title="Close Preview">
+            <span>&times; Close</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="iframe-wrapper">
+        <iframe
+          id="liveThesisFrame"
+          title="Live Thesis Link Preview"
+          src="about:blank"
+          loading="eager"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toastBanner" class="toast-banner">Link copied to clipboard!</div>
+
+  <!-- ========================================================================
+       JAVASCRIPT INTERACTIVITY
+       ======================================================================== -->
+  <script>
+    let currentLaunchMode = 'embed'; // 'embed' or 'both'
+    let currentActiveUrl = '';
+
+    /**
+     * Switches how clicking a Flexbox title behaves:
+     * - 'embed': Immediately reveals the URL bar and loads the site inside the live frame below.
+     * - 'both': Immediately reveals the live frame AND opens the URL in a new browser tab.
+     */
+    function setLaunchMode(mode) {
+      currentLaunchMode = mode;
+      document.getElementById('modeEmbedBtn').classList.toggle('active', mode === 'embed');
+      document.getElementById('modeBothBtn').classList.toggle('active', mode === 'both');
+      showToast(
+        mode === 'embed'
+          ? 'Mode: Instant Embedded Link Viewer'
+          : 'Mode: Instant Preview + Auto New Tab'
+      );
+    }
+
+    /**
+     * Triggered immediately when any Flexbox Title Button is clicked.
+     * Highlights the active button, displays the clicked link immediately, and loads it.
+     */
+    function activateThesisLink(buttonEl) {
+      const url = buttonEl.getAttribute('data-url');
+      const title = buttonEl.getAttribute('data-title');
+
+      if (!url) return;
+      currentActiveUrl = url;
+
+      // Update active button styling
+      const allButtons = document.querySelectorAll('.flexbox-title-btn');
+      allButtons.forEach((btn) => {
+        btn.classList.remove('is-active');
+        const rightLabel = btn.querySelector('.btn-flex-right span');
+        if (rightLabel) rightLabel.textContent = 'Click to Launch';
+      });
+
+      buttonEl.classList.add('is-active');
+      const activeRightLabel = buttonEl.querySelector('.btn-flex-right span');
+      if (activeRightLabel) activeRightLabel.textContent = 'Active Now';
+
+      // Populate and immediately show the Instant Link Viewer section
+      const viewerSection = document.getElementById('instantViewerSection');
+      const urlAnchor = document.getElementById('activeUrlAnchor');
+      const openNewTabBtn = document.getElementById('openNewTabBtn');
+      const liveFrame = document.getElementById('liveThesisFrame');
+
+      urlAnchor.href = url;
+      urlAnchor.textContent = url;
+      openNewTabBtn.href = url;
+      liveFrame.src = url;
+
+      viewerSection.classList.add('visible');
+
+      // Smoothly scroll to bring the immediately loaded link into clear view
+      setTimeout(() => {
+        viewerSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 80);
+
+      showToast('Loaded: ' + title);
+
+      // If user selected 'both', also launch in a new tab immediately
+      if (currentLaunchMode === 'both') {
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }
+    }
+
+    /**
+     * Closes the live viewer panel and resets active button states.
+     */
+    function closeViewer() {
+      const viewerSection = document.getElementById('instantViewerSection');
+      const liveFrame = document.getElementById('liveThesisFrame');
+      viewerSection.classList.remove('visible');
+      liveFrame.src = 'about:blank';
+
+      document.querySelectorAll('.flexbox-title-btn').forEach((btn) => {
+        btn.classList.remove('is-active');
+        const rightLabel = btn.querySelector('.btn-flex-right span');
+        if (rightLabel) rightLabel.textContent = 'Click to Launch';
+      });
+    }
+
+    /**
+     * Copies the currently active link using execCommand fallback for compatibility.
+     */
+    function copyActiveUrl() {
+      if (!currentActiveUrl) return;
+      const tempInput = document.createElement('input');
+      tempInput.value = currentActiveUrl;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+        showToast('Copied URL: ' + currentActiveUrl);
+      } catch (err) {
+        showToast('Unable to copy link.');
+      }
+      document.body.removeChild(tempInput);
+    }
+
+    /**
+     * Displays a sleek neon toast notification.
+     */
+    let toastTimer = null;
+    function showToast(message) {
+      const toast = document.getElementById('toastBanner');
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
